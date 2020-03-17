@@ -1,0 +1,35 @@
+
+version: 2
+
+workflows:
+  version: 2
+  all:
+    jobs:
+      - build
+      - lint
+      - test
+
+executors:
+  default-executor:
+    docker:
+       - image: circleci/golang:1.13
+
+jobs:
+
+  build:
+    executor: default-executor
+    steps:
+      - checkout
+      - run: ./scripts/build.sh
+
+  lint:
+    executor: default-executor
+    steps:
+      - checkout
+      - run: ./scripts/lint.sh
+
+  test:
+    executor: default-executor
+    steps:
+      - checkout
+      - run: ./scripts/test.sh

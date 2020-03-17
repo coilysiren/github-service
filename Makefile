@@ -8,6 +8,8 @@ docker_image := $(shell yq read .circleci/config.yml "executors.default-executor
 docker_run := docker run -it --rm \
 	--workdir=/src \
 	--user=root \
+	--env TF_VAR_AWS_ACCOUNT_ID="$(AWS_ACCOUNT_ID)" \
+	--env TF_VAR_AWS_REGION="$(AWS_REGION)" \
 	-v $$(pwd):/src \
 	-v $$(pwd)/.gocache:/go/pkg \
 	-v $$HOME/.aws:/root/.aws \
@@ -32,3 +34,6 @@ build: .init ## ⚙️  Build into local environment
 
 test: .init ## ✅ Run tests
 	$(docker_run) ./scripts/test.sh
+
+plan: .init ## 🗺  Run terraform deploy plan
+	$(docker_run) ./scripts/plan.sh

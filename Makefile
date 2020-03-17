@@ -1,10 +1,13 @@
 
 .DEFAULT_GOAL := help
 
-# docker run script
+# get docker build image
 docker_image := $(shell yq read .circleci/config.yml "executors.default-executor.docker[0].image")
+
+# docker run script
 docker_run := docker run -it --rm \
 	--workdir=/src \
+	--user=root \
 	-v $$(pwd):/src \
 	-v $$(pwd)/.gocache:/go/pkg \
 	-v $$HOME/.aws:/root/.aws \

@@ -11,7 +11,7 @@ workflows:
 executors:
   default-executor:
     docker:
-       - image: lynncyrin/go-web-server:1584428789
+       - image: lynncyrin/go-web-server:1585092611
 
 jobs:
 

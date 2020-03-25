@@ -13,7 +13,7 @@ func ConfigureInfra(ctx *pulumi.Context) (err error) {
 		return err
 	}
 
-	// Export the name of the bucket
+	// Export the name of the cluster
 	ctx.Export("cluster-id", cluster.ID())
 	return nil
 }

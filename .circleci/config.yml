@@ -2,23 +2,26 @@
 version: 2.1
 
 workflows:
+  version: 2
   all:
     jobs:
       - build
       - lint
       - test
       - plan:
-        filters:
-          branches:
-            ignore: master
+          filters:
+            branches:
+              ignore:
+                - master
       - deploy:
-        requires:
-          - build
-          - test
-          - lint
-        filters:
-          branches:
-            only: master
+          requires:
+            - build
+            - test
+            - lint
+          filters:
+            branches:
+              only:
+                - master
 
 executors:
   default-executor:

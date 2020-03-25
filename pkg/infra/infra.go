@@ -8,7 +8,7 @@ import (
 // ConfigureInfra configures the infrastructure for our repo
 func ConfigureInfra(ctx *pulumi.Context) (err error) {
 	// Create an EKS cluster
-	cluster, err := eks.NewCluster(ctx, "github-stats", nil)
+	cluster, err := eks.NewCluster(ctx, "github-stats", &eks.ClusterArgs{})
 	if err != nil {
 		return err
 	}

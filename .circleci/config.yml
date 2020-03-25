@@ -7,11 +7,17 @@ workflows:
       - build
       - lint
       - test
+      - plan
+      - deploy:
+        filters:
+          branches:
+            only:
+              - master
 
 executors:
   default-executor:
     docker:
-       - image: lynncyrin/go-web-server:1584428789
+       - image: lynncyrin/go-web-server:1585092611
 
 jobs:
 
@@ -32,3 +38,15 @@ jobs:
     steps:
       - checkout
       - run: ./scripts/test.sh
+
+  plan:
+    executor: default-executor
+    steps:
+      - checkout
+      - run: ./scripts/plan.sh
+
+  deploy:
+    executor: default-executor
+    steps:
+      - checkout
+      - run: ./scripts/deploy.sh

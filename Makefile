@@ -13,6 +13,7 @@ docker_run := docker run -it --rm \
 	-v $$(pwd):/src \
 	-v $$(pwd)/.gocache:/go/pkg \
 	-v $$HOME/.aws:/root/.aws \
+	-v $$HOME/.pulumi/credentials.json:/root/.pulumi/credentials.json \
 	-v $$HOME/.ssh:/root/.ssh \
 	$(docker_image)
 
@@ -35,5 +36,8 @@ build: .init ## ⚙️  Build into local environment
 test: .init ## ✅ Run tests
 	$(docker_run) ./scripts/test.sh
 
-plan: .init ## 🗺  Run terraform deploy plan
+plan: .init ## 🗺  Run a deploy plan
 	$(docker_run) ./scripts/plan.sh
+
+deploy: .init ## 📈 Deploy changes
+	$(docker_run) ./scripts/deploy.sh

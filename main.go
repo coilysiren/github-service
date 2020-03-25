@@ -1,19 +1,10 @@
 package main
 
 import (
+	"github.com/lynncyrin/github-stats/pkg/infra"
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
 func main() {
-	pulumi.Run(func(ctx *pulumi.Context) error {
-		// // Create an AWS resource (S3 Bucket)
-		// bucket, err := s3.NewBucket(ctx, "my-bucket", nil)
-		// if err != nil {
-		// 	return err
-		// }
-
-		// // Export the name of the bucket
-		// ctx.Export("bucketName", bucket.ID())
-		return nil
-	})
+	pulumi.Run(infra.SetupInfra)
 }

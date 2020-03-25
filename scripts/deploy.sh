@@ -3,4 +3,4 @@
 set -euo pipefail
 set -o xtrace
 
-pulumi preview --stack dev
+pulumi up --stack dev

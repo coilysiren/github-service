@@ -7,12 +7,18 @@ workflows:
       - build
       - lint
       - test
-      - plan
-      - deploy:
+      - plan:
         filters:
           branches:
-            only:
-              - master
+            ignore: master
+      - deploy:
+        requires:
+          - build
+          - test
+          - lint
+        filters:
+          branches:
+            only: master
 
 executors:
   default-executor:

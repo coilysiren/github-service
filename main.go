@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	pulumi.Run(infra.SetupInfra)
+	pulumi.Run(infra.ConfigureInfra)
 }

@@ -1,3 +1,0 @@
-name: github-stats
-runtime: go
-description: a server for personal github stats

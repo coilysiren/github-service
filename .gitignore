@@ -3,7 +3,6 @@ vendor/
 .gocache/
 .terraform/
 deploy/plans/
-deploy/state/
 
 # Logs
 logs

@@ -3,4 +3,4 @@
 set -euo pipefail
 set -o xtrace
 
-terraform apply -state=./deploy/state/terraform.tfstate ./deploy/plans/plan
+terraform apply ./deploy/plans/resources

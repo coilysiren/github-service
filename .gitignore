@@ -1,6 +1,7 @@
 dist/
 vendor/
 .gocache/
+.terraform/
 
 # Logs
 logs

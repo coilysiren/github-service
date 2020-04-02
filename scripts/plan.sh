@@ -3,4 +3,5 @@
 set -euo pipefail
 set -o xtrace
 
-terraform plan
+terraform init ./deploy
+terraform plan ./deploy

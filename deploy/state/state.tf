@@ -1,10 +1,10 @@
 resource "aws_kms_key" "state_key" {
-  description             = "This key is used to encrypt the terraform state for ${var.name}"
+  description             = "This key is used to encrypt the terraform state for ${var.NAME}"
   deletion_window_in_days = 10
 }
 
 resource "aws_s3_bucket" "state_bucket" {
-  bucket = "${var.name}-state-bucket"
+  bucket = var.STATE_BUCKET_NAME
 
   # 🔐
   acl = "private"

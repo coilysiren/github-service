@@ -4,6 +4,9 @@ vendor/
 .terraform/
 deploy/plans/
 
+.terraform.tfstate.lock.info
+terraform.tfstate
+
 # Logs
 logs
 *.log

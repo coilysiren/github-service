@@ -3,4 +3,4 @@
 set -euo pipefail
 set -o xtrace
 
-go run main.go
+env PORT=8080 go run main.go

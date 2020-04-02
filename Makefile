@@ -8,6 +8,8 @@ docker_image := $(shell yq read .circleci/config.yml "executors.default-executor
 docker_run := docker run -it --rm \
 	--workdir=/src \
 	--user=root \
+	--publish 8080:8080 \
+	--env GIN_MODE=release \
 	--env TF_VAR_AWS_ACCOUNT_ID="$(AWS_ACCOUNT_ID)" \
 	--env TF_VAR_AWS_REGION="$(AWS_REGION)" \
 	-v $$(pwd):/src \
@@ -32,8 +34,11 @@ lint: .init ## 🧹 Run linters
 build: .init ## ⚙️  Build into local environment
 	$(docker_run) ./scripts/build.sh darwin
 
-run: .init ## 🏃🏽‍♀️ Run local web server
+run: .init ## 🏃🏽‍♀️ Run local web server in prod mode, inside docker
 	$(docker_run) ./scripts/run.sh
+
+dev: .init ## 🏃🏽‍♀️⚙️ Run local web server in dev mode
+	./scripts/run.sh
 
 test: .init ## ✅ Run tests
 	$(docker_run) ./scripts/test.sh

@@ -20,13 +20,13 @@ POLICY
 }
 
 # attach builtin aws eks cluster policy to our locally created role
-resource "aws_iam_role_policy_attachment" "cluster-policy" {
+resource "aws_iam_role_policy_attachment" "cluster_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = aws_iam_role.role.name
 }
 
 # attach builtin aws eks service policy to our locally created role
-resource "aws_iam_role_policy_attachment" "service-policy" {
+resource "aws_iam_role_policy_attachment" "service_policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = aws_iam_role.role.name
 }

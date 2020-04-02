@@ -46,5 +46,6 @@ test: .init ## ✅ Run tests
 plan: .init ## 🗺  Run a deploy plan
 	$(docker_run) ./scripts/plan.sh
 
+apply: deploy # alias
 deploy: .init ## 📈 Deploy changes
 	$(docker_run) ./scripts/deploy.sh

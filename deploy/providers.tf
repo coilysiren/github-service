@@ -3,6 +3,8 @@ terraform {
 }
 
 provider "aws" {
-  version = ">= 2.28.1"
-  region  = var.AWS_REGION
+  version                 = ">= 2.28.1"
+  region                  = var.AWS_REGION
+  shared_credentials_file = "~/.aws/credentials"
+  profile                 = "default"
 }

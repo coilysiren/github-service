@@ -13,7 +13,6 @@ docker_run := docker run -it --rm \
 	-v $$(pwd):/src \
 	-v $$(pwd)/.gocache:/go/pkg \
 	-v $$HOME/.aws:/root/.aws \
-	-v $$HOME/.pulumi/credentials.json:/root/.pulumi/credentials.json \
 	-v $$HOME/.ssh:/root/.ssh \
 	$(docker_image)
 
@@ -32,6 +31,9 @@ lint: .init ## 🧹 Run linters
 
 build: .init ## ⚙️  Build into local environment
 	$(docker_run) ./scripts/build.sh darwin
+
+run: .init ## 🏃🏽‍♀️ Run local web server
+	$(docker_run) ./scripts/run.sh
 
 test: .init ## ✅ Run tests
 	$(docker_run) ./scripts/test.sh

@@ -1,8 +1,5 @@
-module github.com/lynncyrin/github-stats
+module github.com/lynncyrin/github-service
 
 go 1.13
 
-require (
-	github.com/pulumi/pulumi v1.13.0
-	github.com/pulumi/pulumi-aws v1.27.0
-)
+require github.com/gin-gonic/gin v1.6.2

@@ -3,4 +3,4 @@
 set -euo pipefail
 set -o xtrace
 
-terraform apply
+go run main.go

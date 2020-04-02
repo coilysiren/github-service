@@ -1,6 +1,6 @@
-# github-stats
+# github-service
 
-a server for personal github stats
+a service for collecting personal github information
 
 ## Major tools
 

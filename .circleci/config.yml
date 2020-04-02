@@ -18,7 +18,7 @@ executors:
   default-executor:
     docker:
        # this image is built from https://github.com/lynncyrin/docker-images
-       - image: lynncyrin/go-web-server:1585092611
+       - image: lynncyrin/go-web-server:1585813995
 
 jobs:
 

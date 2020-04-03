@@ -14,4 +14,9 @@ resource "aws_eks_cluster" "cluster" {
     aws_iam_role_policy_attachment.cluster_policy,
     aws_iam_role_policy_attachment.service_policy,
   ]
+
+  # # update kubeconfig
+  # provisioner "local-exec" {
+  #   command = "aws eks update-kubeconfig --name ${var.NAME}"
+  # }
 }

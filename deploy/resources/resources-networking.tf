@@ -24,13 +24,4 @@ resource "aws_security_group" "cluster" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  # terraform docs: https://www.terraform.io/docs/providers/aws/r/security_group_rule.html
-  ingress {
-    description = "Allow my local machine to communicate with the cluster"
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = [var.LOCAL_MACHINE_EXTERNAL_CIDR]
-  }
 }

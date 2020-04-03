@@ -1,5 +1,1 @@
 name: github-service
-
-# 🙅🏽‍♀️ do not hack! 🙅🏽‍♀️
-# get this information from your internet hardware
-local-machine-external-cidr: 24.56.224.0/19

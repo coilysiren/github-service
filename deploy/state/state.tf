@@ -1,8 +1,16 @@
+# purpose: enable server side state encryption
+#
+# terraform docs: https://www.terraform.io/docs/providers/aws/d/kms_key.html
+# aws docs: https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html
 resource "aws_kms_key" "state_key" {
   description             = "This key is used to encrypt the terraform state for ${var.NAME}"
   deletion_window_in_days = 10
 }
 
+# purpose: store the terraform state
+#
+# terraform docs: https://www.terraform.io/docs/providers/aws/d/s3_bucket.html
+# aws docs: https://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html
 resource "aws_s3_bucket" "state_bucket" {
   bucket = var.STATE_BUCKET_NAME
 
@@ -30,7 +38,10 @@ resource "aws_s3_bucket" "state_bucket" {
   }
 }
 
-# 🔐 private bucket is private
+# purpose: make the state bucket more private 🔐
+#
+# terraform docs: https://www.terraform.io/docs/providers/aws/r/s3_bucket_public_access_block.html
+# aws docs: https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html
 resource "aws_s3_bucket_public_access_block" "state_bucket_access_block" {
   bucket = aws_s3_bucket.state_bucket.id
 

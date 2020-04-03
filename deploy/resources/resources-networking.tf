@@ -1,3 +1,32 @@
+# purpose: define networking rules for the eks cluster
+#
+# terraform docs: https://www.terraform.io/docs/providers/aws/d/security_group.html
+# aws docs: https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html
+resource "aws_security_group" "cluster" {
+  name        = "${var.NAME}-cluster"
+  description = "EKS cluster "
+  vpc_id      = "${aws_vpc.demo.id}"
+
+  egress {
+    description = "Allow all outbound requests"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # OPTIONAL: Allow inbound traffic from your local workstation external IP
+  #           to the Kubernetes. You will need to replace A.B.C.D below with
+  #           your real IP. Services like icanhazip.com can help you find this.
+  ingress {
+    description = "Allow my local machine to communicate with the cluster"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    IP          = var.LOCAL_MACHINE_EXTERNAL_IP_ADDRESS
+  }
+}
+
 # # This data source is included for ease of sample architecture deployment
 # # and can be swapped out as necessary.
 # data "aws_availability_zones" "available" {}

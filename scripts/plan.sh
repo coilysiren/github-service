@@ -3,13 +3,15 @@
 set -euo pipefail
 set -o xtrace
 
-# setup basic local configuration
+# setup configuration
 name=$(yq r config.yml name)
+localMachineExternalIPAddress=$(yq r config.yml local-machine-external-ip-address)
 stateBucketRegion="us-west-2"
 stateBucketName="$name-state-bucket"
 export TF_VAR_STATE_BUCKET_NAME="$stateBucketName"
 export TF_VAR_STATE_BUCKET_REGION="$stateBucketRegion"
 export TF_VAR_NAME="$name"
+export TF_VAR_LOCAL_MACHINE_EXTERNAL_IP_ADDRESS="$localMachineExternalIPAddress"
 
 # setup the plans dir
 mkdir -p ./deploy/plans

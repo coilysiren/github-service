@@ -1,6 +1,5 @@
 # vars filled in by env vars
 variable "NAME" {}
-variable "AWS_ACCOUNT_ID" {}
 variable "AWS_REGION" {}
 variable "STATE_BUCKET_REGION" {}
 variable "STATE_BUCKET_NAME" {}

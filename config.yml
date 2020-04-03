@@ -1,1 +1,5 @@
 name: github-service
+
+# 🙅🏽‍♀️ do not hack! 🙅🏽‍♀️
+# obtain via `dig @resolver1.opendns.com ANY myip.opendns.com +short`
+local-machine-external-ip-address: 24.56.226.161

@@ -7,9 +7,9 @@ set -o xtrace
 name=$(yq r config.yml name)
 stateBucketRegion="us-west-2"
 stateBucketName="$name-state-bucket"
-export STATE_BUCKET_NAME="$stateBucketName"
-export STATE_BUCKET_REGION="$stateBucketRegion"
-export NAME="$name"
+export TF_VAR_STATE_BUCKET_NAME="$stateBucketName"
+export TF_VAR_STATE_BUCKET_REGION="$stateBucketRegion"
+export TF_VAR_NAME="$name"
 
 # setup the plans dir
 mkdir -p ./deploy/plans

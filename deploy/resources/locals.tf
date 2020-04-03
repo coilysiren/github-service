@@ -7,6 +7,7 @@ variable "STATE_BUCKET_NAME" {}
 
 # aws access configuration
 provider "aws" {
+  version                 = "~> 2.55"
   shared_credentials_file = "~/.aws/credentials"
   profile                 = "default"
   region                  = var.AWS_REGION

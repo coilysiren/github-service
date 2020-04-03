@@ -1,6 +1,6 @@
 # create the role our eks cluster runs as
 resource "aws_iam_role" "role" {
-  name = var.name
+  name = var.NAME
 
   # would really prefer if this was in yaml
   assume_role_policy = <<POLICY

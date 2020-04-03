@@ -5,13 +5,13 @@ set -o xtrace
 
 # setup configuration
 name=$(yq r config.yml name)
-localMachineExternalIPAddress=$(yq r config.yml local-machine-external-ip-address)
+localMachineExternalCidr=$(yq r config.yml local-machine-external-cidr)
 stateBucketRegion="us-west-2"
 stateBucketName="$name-state-bucket"
 export TF_VAR_STATE_BUCKET_NAME="$stateBucketName"
 export TF_VAR_STATE_BUCKET_REGION="$stateBucketRegion"
 export TF_VAR_NAME="$name"
-export TF_VAR_LOCAL_MACHINE_EXTERNAL_IP_ADDRESS="$localMachineExternalIPAddress"
+export TF_VAR_LOCAL_MACHINE_EXTERNAL_CIDR="$localMachineExternalCidr"
 
 # setup the plans dir
 mkdir -p ./deploy/plans

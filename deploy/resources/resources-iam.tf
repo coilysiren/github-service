@@ -1,6 +1,6 @@
 # purpose: the eks cluster runs as this role
 #
-# terraform docs: https://www.terraform.io/docs/providers/aws/d/iam_role.html
+# terraform docs: https://www.terraform.io/docs/providers/aws/r/iam_role.html
 # aws docs: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html
 resource "aws_iam_role" "role" {
   name        = var.NAME

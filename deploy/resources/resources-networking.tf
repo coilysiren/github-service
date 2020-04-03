@@ -1,10 +1,17 @@
 # purpose: get data for the default VPC
 #
-# terraform docs:
-# - https://www.terraform.io/docs/providers/aws/d/vpc.html
-# - https://www.terraform.io/docs/configuration/data-sources.html
-data "aws_vpc" "default_vpc" {
-  default = true
+# terraform docs: https://www.terraform.io/docs/providers/aws/r/default_vpc.html
+resource "aws_default_vpc" "default" {
+  tags = {
+    Name = "Default VPC"
+  }
+}
+
+# purpose: get the default subnets
+#
+# terraform docs: https://www.terraform.io/docs/providers/aws/d/subnet.html
+data "aws_subnet_ids" "default" {
+  vpc_id = aws_default_vpc.default.id
 }
 
 # purpose: define networking rules for the eks cluster
@@ -14,7 +21,7 @@ data "aws_vpc" "default_vpc" {
 resource "aws_security_group" "cluster" {
   name        = "${var.NAME}-cluster"
   description = "EKS cluster security group"
-  vpc_id      = data.aws_vpc.default_vpc.id
+  vpc_id      = aws_default_vpc.default.id
 
   # terraform docs: https://www.terraform.io/docs/providers/aws/r/security_group_rule.html
   egress {

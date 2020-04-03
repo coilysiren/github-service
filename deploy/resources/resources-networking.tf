@@ -1,4 +1,4 @@
-# purpose: get data for the default VPC
+# purpose: get (not create) the resource for the default VPC
 #
 # terraform docs: https://www.terraform.io/docs/providers/aws/r/default_vpc.html
 resource "aws_default_vpc" "default" {
